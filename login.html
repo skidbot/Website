@@ -8,7 +8,7 @@
     body {
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
-    background-color: #000;
+    background-color: #918f8f;
      color: #fff;
     }
 
@@ -164,6 +164,16 @@
     <input type="email" id="email" name="email" required />
   </div>
 
+    <div class="form-group" id="firstnameGroup">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="firstName" required />
+  </div>
+
+    <div class="form-group" id="lastnameGroup">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="lastName" required />
+  </div>
+
   <div class="form-group">
     <label for="password">Password</label>
     <input type="password" id="password" name="password" required />
@@ -177,6 +187,7 @@
   const toggleLink = document.getElementById('toggleLink');
   const formTitle  = document.getElementById('formTitle');
   const emailGroup = document.getElementById('emailGroup');
+  const nameGroup = document.getElementById('nameGroup');
   const submitBtn  = document.getElementById('submitBtn');
   const form       = document.getElementById('accountForm');
 
@@ -187,12 +198,16 @@
     if (isLogin) {
       formTitle.textContent = 'Log In';
       emailGroup.style.display = 'none';  // hide email field
+      firstnameGroup.style.display = 'none';  
+      lastnameGroup.style.display = 'none'; 
       submitBtn.textContent = 'Log In';
       toggleLink.textContent = "Don't have an account? Sign up";
       form.action = 'login_user.php';     // server endpoint for login
     } else {
       formTitle.textContent = 'Create Account';
       emailGroup.style.display = 'block';
+      firstnameGroup.style.display = 'block';
+      lastnameGroup.style.display = 'block';  
       submitBtn.textContent = 'Sign Up';
       toggleLink.textContent = "Already have an account? Log in";
       form.action = 'insert_user.php';    // server endpoint for sign up
