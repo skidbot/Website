@@ -1,0 +1,95 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	body {
+	  margin: 0;
+	  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+	  background: #6e6565;
+	}
+
+	.topnav {
+  	overflow: hidden;
+  	background-color: #333;
+	}
+	
+	.topnav a {
+	  float: left;
+	  position: relative;
+	  color: #ffffff;
+	  padding: 16px 20px;
+	  text-decoration: none;
+	  font-size: 18px;
+	  letter-spacing: 0.5px;
+	  transition: color 0.3s ease;
+	}
+	
+	.topnav a::after {
+	  content: "";
+	  position: absolute;
+	  left: 0;
+	  bottom: 6px;
+	  width: 0%;
+	  height: 2px;
+	  background: #04AA6D;
+	  transition: width 0.3s ease;
+	}
+	
+	.topnav a:hover {
+	  color: #04AA6D;
+	}
+	
+	.topnav a:hover::after {
+	  width: 100%;
+	}
+	
+	.topnav a.active {
+	  color: #ffffff;
+	  background: #04AA6D;
+	  border-radius: 4px;
+	  box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+	}
+
+		/* Hero section */
+  .hero {
+    background: url('products/banner.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+  }
+  .hero h1 {
+    font-size: 48px;
+    margin: 0;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  }
+  .hero p {
+    font-size: 20px;
+    margin-top: 12px;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+  }
+	</style>
+</head>
+
+
+<body>
+<div class="topnav">
+	<a href="/index.html">
+		<img src="logo.png" alt="Site logo" width="30" height="30">
+	  </a>
+	<a href="/index.html">Home</a>
+	<a class="active" href="/about.html">About</a>
+	<a href="/store.html">Store</a>
+	<a href="/login.html">Account</a>
+	<a href="/checkout.html">Checkout</a>
+</div>
+
+<!-- Hero banner -->
+<div class="hero">
+  <h1>Welcome to Sam's Shack</h1>
+  <img src="logo.png" width="250" height="250" />
+  <p>Sam’s Shack is an online game store that provides customers with an easy way to purchase the latest PC games. 
+		Customers want a simple way to browse, purchase, and download online games that pique their interest.</p>
+</div>
+
+</body>
+</html>

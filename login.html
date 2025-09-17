@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account</title>
+<style>
+    body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #000;
+     color: #fff;
+    }
+
+    main {
+    display: flex;
+    justify-content: center;
+     align-items: center;
+    min-height: calc(100vh - 60px); /* 60px = approx nav height */
+    padding-top: 60px;              /* match nav height if needed */
+    }
+
+  	.topnav {
+     overflow: hidden;
+     background-color: #333;
+    position: fixed;     /* stays at top when scrolling */
+     top: 0;
+     left: 0;
+     width: 100%;
+     z-index: 1000;
+    }
+	
+	.topnav a {
+	  float: left;
+	  position: relative;
+	  color: #ffffff;
+	  padding: 16px 20px;
+	  text-decoration: none;
+	  font-size: 18px;
+	  letter-spacing: 0.5px;
+	  transition: color 0.3s ease;
+	}
+	
+	.topnav a::after {
+	  content: "";
+	  position: absolute;
+	  left: 0;
+	  bottom: 6px;
+	  width: 0%;
+	  height: 2px;
+	  background: #04AA6D;
+	  transition: width 0.3s ease;
+	}
+	
+	.topnav a:hover {
+	  color: #04AA6D;
+	}
+	
+	.topnav a:hover::after {
+	  width: 100%;
+	}
+	
+	.topnav a.active {
+	  color: #ffffff;
+	  background: #04AA6D;
+	  border-radius: 4px;
+	  box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+	}
+
+  .account-form {
+    background: #1c1c1c;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .account-form h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #00a2ff;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #ccc;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #2c2c2c;
+    color: #fff;
+    font-size: 16px;
+    transition: border 0.3s, background 0.3s;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: #00a2ff;
+    background: #333;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    background: #00a2ff;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .submit-btn:hover {
+    background: #00a2ff;
+  }
+
+  .toggle-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #00a2ff;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+    <div class="topnav">
+	<a href="/index.html">
+		<img src="logo.png" alt="Site logo" width="30" height="30">
+	  </a>
+	<a href="/index.html">Home</a>
+	<a href="/about.html">About</a>
+	<a href="/store.html">Store</a>
+	<a class ="active" href="/login.html">Account</a>
+	<a href="/checkout.html">Checkout</a>
+</div>
+<main>
+<form class="account-form" id="accountForm" action="user_action.php" method="POST">
+  <h2 id="formTitle">Create Account</h2>
+
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required />
+  </div>
+
+  <div class="form-group" id="emailGroup">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required />
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required />
+  </div>
+
+  <button type="submit" class="submit-btn" id="submitBtn">Sign Up</button>
+  <span class="toggle-link" id="toggleLink">Already have an account? Log in</span>
+</form>
+</main>
+<script>
+  const toggleLink = document.getElementById('toggleLink');
+  const formTitle  = document.getElementById('formTitle');
+  const emailGroup = document.getElementById('emailGroup');
+  const submitBtn  = document.getElementById('submitBtn');
+  const form       = document.getElementById('accountForm');
+
+  let isLogin = false;
+
+  toggleLink.addEventListener('click', () => {
+    isLogin = !isLogin;
+    if (isLogin) {
+      formTitle.textContent = 'Log In';
+      emailGroup.style.display = 'none';  // hide email field
+      submitBtn.textContent = 'Log In';
+      toggleLink.textContent = "Don't have an account? Sign up";
+      form.action = 'login_user.php';     // server endpoint for login
+    } else {
+      formTitle.textContent = 'Create Account';
+      emailGroup.style.display = 'block';
+      submitBtn.textContent = 'Sign Up';
+      toggleLink.textContent = "Already have an account? Log in";
+      form.action = 'insert_user.php';    // server endpoint for sign up
+    }
+  });
+</script>
+</body>
+</html>
